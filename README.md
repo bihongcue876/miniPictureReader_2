@@ -128,26 +128,16 @@ pip install pyinstaller
 pyinstaller --clean --onefile --collect-all PySide6 --name PictureReader main.py
 ```
 
-### 跨平台自动构建（GitHub Actions）
+### 跨平台自动构建声明（GitHub Actions）
 
-项目已配置 GitHub Actions 自动构建，提交代码后自动打包三平台版本：
+项目已配置 GitHub Actions 自动构建：
 
 | 平台 | 触发方式 | 产物 |
 |------|---------|------|
-| Windows | 推送 `main` 或 `v*` 标签 | `PictureReader.exe` |
-| macOS | 同上 | `PictureReader` (可执行文件) |
-| Linux | 同上 | `PictureReader` (可执行文件) |
+| Windows | `PictureReader.exe` |
+| macOS |`PictureReader` (可执行文件) |
+| Linux |`PictureReader` (可执行文件) |
 
-**使用方式：**
-1. 将项目推送至 GitHub 仓库
-2. 打标签 `v1.0`、`v1.1` 等自动触发构建
-3. 在 GitHub Releases 页面下载对应平台的安装包
-
-```bash
-# 打标签并推送，自动触发构建 + 发布
-git tag v1.0
-git push origin v1.0
-```
 
 ## 许可
 
