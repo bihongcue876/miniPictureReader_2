@@ -81,17 +81,19 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           pattern: PictureReader-*
-          merge-multiple: true
 
       - name: Create release archives
         shell: bash
         run: |
           mkdir -p release
-          zip -j release/PictureReader-${{ github.ref_name }}-windows.zip PictureReader-windows/PictureReader.exe
-          chmod +x PictureReader-linux/PictureReader
-          tar czf release/PictureReader-${{ github.ref_name }}-linux.tar.gz -C PictureReader-linux PictureReader
-          chmod +x PictureReader-macos/PictureReader
-          tar czf release/PictureReader-${{ github.ref_name }}-macos.tar.gz -C PictureReader-macos PictureReader
+          cp PictureReader-windows/dist/PictureReader.exe .
+          zip release/PictureReader-${{ github.ref_name }}-windows.zip PictureReader.exe
+          chmod +x PictureReader-linux/dist/PictureReader
+          cp PictureReader-linux/dist/PictureReader .
+          tar czf release/PictureReader-${{ github.ref_name }}-linux.tar.gz PictureReader
+          chmod +x PictureReader-macos/dist/PictureReader
+          cp PictureReader-macos/dist/PictureReader .
+          tar czf release/PictureReader-${{ github.ref_name }}-macos.tar.gz PictureReader
 
       - uses: softprops/action-gh-release@v2
         with:
