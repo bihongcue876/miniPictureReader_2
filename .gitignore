@@ -53,3 +53,4 @@ debug.log
 # --- Sample / test resources generated at runtime ---
 tests/resources/
 !tests/resources/.gitkeep
+releases
