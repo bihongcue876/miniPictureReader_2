@@ -1,0 +1,23 @@
+[project]
+name = "picture-reader"
+version = "0.1.0"
+description = "轻量级跨平台图片查看与管理工具"
+requires-python = ">=3.10"
+dependencies = [
+    "PySide6>=6.6",
+    "Pillow>=10.0",
+    "piexif>=1.1",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+raw = ["rawpy>=0.18"]
+
+[project.urls]
+Homepage = "https://github.com/your/project"
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
