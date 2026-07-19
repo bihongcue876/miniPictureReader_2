@@ -1,0 +1,55 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+
+# --- Virtual environment ---
+.venv/
+venv/
+env/
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- Test ---
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.trx
+
+# --- OS ---
+ehthumbs.db
+Desktop.ini
+
+# --- Build / Packaging ---
+*.spec
+*.manifest
+__pycache__/
+
+# --- Logs ---
+*.log
+debug.log
+
+# --- User config ---
+*.ini
+*.cfg
+!pyproject.toml
+!setup.cfg
+
+# --- Sample / test resources generated at runtime ---
+tests/resources/
+!tests/resources/.gitkeep
