@@ -82,17 +82,27 @@ jobs:
         with:
           pattern: PictureReader-*
 
+      - name: Debug artifact structure
+        shell: bash
+        run: find . -type f | head -30
+
       - name: Create release archives
         shell: bash
         run: |
           mkdir -p release
-          cp PictureReader-windows/dist/PictureReader.exe .
+          WEXE=$(find . -name "PictureReader.exe" -type f | head -1)
+          LEXE=$(find . -name "PictureReader" -type f | head -3 | tail -1)
+          MEXE=$(find . -name "PictureReader" -type f | tail -1)
+          echo "Windows: $WEXE"
+          echo "Linux: $LEXE"
+          echo "macOS: $MEXE"
+          cp "$WEXE" PictureReader.exe
           zip release/PictureReader-${{ github.ref_name }}-windows.zip PictureReader.exe
-          chmod +x PictureReader-linux/dist/PictureReader
-          cp PictureReader-linux/dist/PictureReader .
+          chmod +x "$LEXE"
+          cp "$LEXE" PictureReader
           tar czf release/PictureReader-${{ github.ref_name }}-linux.tar.gz PictureReader
-          chmod +x PictureReader-macos/dist/PictureReader
-          cp PictureReader-macos/dist/PictureReader .
+          chmod +x "$MEXE"
+          cp "$MEXE" PictureReader
           tar czf release/PictureReader-${{ github.ref_name }}-macos.tar.gz PictureReader
 
       - uses: softprops/action-gh-release@v2
